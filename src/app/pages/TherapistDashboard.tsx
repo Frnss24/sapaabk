@@ -64,7 +64,7 @@ export default function TherapistDashboard() {
           <div>
             <p style={{ fontSize: '0.85rem', opacity: 0.8, fontWeight: 600 }}>Panel Terapis</p>
             <h1 style={{ fontWeight: 900, fontSize: '1.5rem' }} className="mt-0.5 mb-1">
-              👩‍⚕️ Bu Dewi Rahayu
+              👩‍⚕️ Dyah Miyura Sari, S.Tr. Kes
             </h1>
             <p style={{ fontSize: '0.85rem', opacity: 0.85 }}>Terapi Okupasi • {CHILDREN_LIST.length} anak aktif</p>
           </div>

@@ -21,7 +21,7 @@ import logoImg from '../../assets/logo-baru.png';
 const NAV_ITEMS = {
   parent: [
     { to: '/', label: 'Beranda', icon: Home, exact: true },
-    { to: '/activities', label: 'Aktivitas', icon: Activity, exact: false },
+    { to: '/activities', label: 'Home Program', icon: Activity, exact: false },
     { to: '/reports', label: 'Laporan', icon: FileText, exact: false },
     { to: '/progress', label: 'Perkembangan', icon: TrendingUp, exact: false },
   ],
@@ -29,13 +29,13 @@ const NAV_ITEMS = {
     { to: '/', label: 'Beranda', icon: Home, exact: true },
     { to: '/reports', label: 'Laporan Masuk', icon: ClipboardList, exact: false },
     { to: '/progress', label: 'Perkembangan', icon: TrendingUp, exact: false },
-    { to: '/activities', label: 'Aktivitas', icon: Activity, exact: false },
+    { to: '/activities', label: 'Home Program', icon: Activity, exact: false },
   ],
   admin: [
     { to: '/', label: 'Dashboard', icon: Home, exact: true },
     { to: '/reports', label: 'Laporan', icon: FileText, exact: false },
     { to: '/progress', label: 'Statistik', icon: TrendingUp, exact: false },
-    { to: '/activities', label: 'Aktivitas', icon: Activity, exact: false },
+    { to: '/activities', label: 'Home Program', icon: Activity, exact: false },
   ],
 };
 

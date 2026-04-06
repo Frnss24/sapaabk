@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { ACTIVITIES } from '../data/mockData';
 import { Search, ChevronRight, Clock, Filter } from 'lucide-react';
 
-const CATEGORIES = ['Semua', 'Perawatan Diri', 'Kebersihan', 'Komunikasi', 'Sosial'];
+const CATEGORIES = ['Semua', 'Pengolahan Pangan', 'Budidaya', 'Pengemasan'];
 
 const DIFFICULTY_COLORS: Record<string, { badge: string; dot: string }> = {
   Pemula: { badge: 'bg-green-100 text-green-700', dot: 'bg-green-400' },
@@ -27,10 +27,10 @@ export default function ActivityModule() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-gray-800" style={{ fontWeight: 900, fontSize: '1.5rem' }}>
-          🎯 Program Aktivitas
+          🏠 Home Program
         </h1>
         <p className="text-gray-500 mt-1" style={{ fontSize: '0.9rem' }}>
-          Aktivitas terapi harian berdasarkan kegiatan sehari-hari (Activities of Daily Living)
+          Program keterampilan berbasis praktik untuk melatih kemandirian, ketelitian, dan tanggung jawab anak
         </p>
       </div>
 

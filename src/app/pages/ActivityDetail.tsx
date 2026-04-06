@@ -18,6 +18,7 @@ export default function ActivityDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const activity = ACTIVITIES.find(a => a.id === id);
+  const [activeLevel, setActiveLevel] = useState(1);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [showUpload, setShowUpload] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -43,8 +44,14 @@ export default function ActivityDetail() {
     });
   };
 
-  const allDone = completedSteps.size === activity.instructions.length;
-  const progress = Math.round((completedSteps.size / activity.instructions.length) * 100);
+  const currentLevelData = activity.levels.find(level => level.level === activeLevel) || activity.levels[0];
+  const allDone = completedSteps.size === currentLevelData.steps.length;
+  const progress = Math.round((completedSteps.size / currentLevelData.steps.length) * 100);
+
+  const handleChangeLevel = (level: number) => {
+    setActiveLevel(level);
+    setCompletedSteps(new Set());
+  };
 
   const handleUpload = () => {
     setUploadSuccess(true);
@@ -95,7 +102,7 @@ export default function ActivityDetail() {
         <div className="mt-4">
           <div className="flex justify-between mb-1">
             <span style={{ fontSize: '0.8rem', fontWeight: 700 }} className="text-gray-600">
-              Langkah selesai: {completedSteps.size}/{activity.instructions.length}
+              Level {activeLevel} selesai: {completedSteps.size}/{currentLevelData.steps.length}
             </span>
             <span className={activity.iconColorClass} style={{ fontSize: '0.8rem', fontWeight: 800 }}>
               {progress}%
@@ -133,10 +140,37 @@ export default function ActivityDetail() {
       {/* Step-by-step Instructions */}
       <div className="bg-white rounded-3xl p-5 shadow-sm border border-gray-100 mb-5">
         <h2 className="text-gray-800 mb-4" style={{ fontWeight: 800, fontSize: '1.05rem' }}>
-          📋 Langkah-langkah
+          📚 Level Home Program
         </h2>
+
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
+          {activity.levels.map(level => (
+            <button
+              key={level.level}
+              onClick={() => handleChangeLevel(level.level)}
+              className={`px-4 py-2 rounded-full text-sm whitespace-nowrap border transition-all ${
+                activeLevel === level.level
+                  ? 'bg-green-500 text-white border-green-500 shadow-sm shadow-green-200'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-green-300 hover:text-green-600'
+              }`}
+              style={{ fontWeight: 700 }}
+            >
+              Level {level.level}
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-4">
+          <p className="text-blue-700" style={{ fontWeight: 800, fontSize: '0.9rem' }}>
+            {currentLevelData.title}
+          </p>
+          <p className="text-blue-800 mt-1" style={{ fontSize: '0.82rem', lineHeight: 1.6 }}>
+            Panduan orang tua: {currentLevelData.guide}
+          </p>
+        </div>
+
         <div className="space-y-3">
-          {activity.instructions.map((step, index) => (
+          {currentLevelData.steps.map((step, index) => (
             <button
               key={index}
               onClick={() => toggleStep(index)}
